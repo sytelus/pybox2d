@@ -5,13 +5,13 @@ os:
   - linux
 #   - osx
 python:
-  - "2.6"
+  # - "2.6"  # no dictionary comprehensions in 2.6, sorry
   - "2.7"
-  - "3.2"
+  # - "3.2"   # waste of time, coverage module doesn't work
   - "3.3"
   - "3.4"
   - "3.5"
-  - "pypy"
+  # - "pypy"  # swig doesn't seem to work :(
 
 before_install:
   - echo $TRAVIS_OS_NAME
