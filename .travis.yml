@@ -5,13 +5,13 @@ os:
   - linux
 #   - osx
 python:
-  #  - "2.6"
+  - "2.6"
   - "2.7"
-    # - "3.2"
-    # - "3.3"
+  - "3.2"
+  - "3.3"
   - "3.4"
-    # - "3.5"
-    # - "pypy"
+  - "3.5"
+  - "pypy"
 
 before_install:
   - echo $TRAVIS_OS_NAME
