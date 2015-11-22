@@ -22,7 +22,7 @@ python:
 
 before_install:
   - echo $TRAVIS_OS_NAME
-  - pip install setuptools
+  - pip install setuptools nose coverage
   # OSX
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew update; fi
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install swig; fi
@@ -30,4 +30,4 @@ install:
   - python setup.py build --force
   - python setup.py install
 
-script: nosetests -w tests --with-coverage
+script: nosetests -v -w tests --with-coverage --cover-package=Box2D
