@@ -1,9 +1,16 @@
 # vi: sw=2 ts=2 sts=2 expandtab
 
+sudo: false
 language: python
 os:
   - linux
 #   - osx
+addons:
+  apt:
+    # sources:
+    #   -
+    packages:
+      - swig2.0
 python:
   #  - "2.6"
   - "2.7"
@@ -15,10 +22,6 @@ python:
 
 before_install:
   - echo $TRAVIS_OS_NAME
-  # Linux
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get update -qq; fi
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then apt-cache search swig; fi
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install -y swig3.0; fi
   # OSX
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew update; fi
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install swig; fi
