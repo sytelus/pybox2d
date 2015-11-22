@@ -40,3 +40,6 @@ script:
   # top-level dir
   - cd tests
   - nosetests -v -w . --with-coverage --cover-package=Box2D
+
+after_success:
+  - coveralls
