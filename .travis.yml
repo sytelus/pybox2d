@@ -10,7 +10,7 @@ addons:
     # sources:
     #   -
     packages:
-      - swig2.0
+      - swig
 python:
   #  - "2.6"
   - "2.7"
