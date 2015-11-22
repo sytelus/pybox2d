@@ -7,10 +7,20 @@ os:
 #   - osx
 addons:
   apt:
-    sources:
-      - ppa:hlprasu/swig-trusty-backports
     packages:
-      - swig3.0
+      # for linuxbrew
+      - build-essential
+      - curl
+      - git
+      - m4
+      - ruby
+      - texinfo
+      - libbz2-dev
+      - libcurl4-openssl-dev
+      - libexpat-dev
+      - libncurses-dev
+      - zlib1g-dev
+
 python:
   #  - "2.6"
   - "2.7"
@@ -22,10 +32,12 @@ python:
 
 before_install:
   - echo $TRAVIS_OS_NAME
+  # install linuxbrew on linux
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then git clone https://github.com/Homebrew/linuxbrew.git ~/.linuxbrew; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then export PATH="$HOME/.linuxbrew/bin:$PATH"; fi
   - pip install setuptools nose coverage
-  # OSX
-  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew update; fi
-  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install swig; fi
+  - brew update
+  - brew install swig
 install:
   - python setup.py build --force
   - python setup.py install
