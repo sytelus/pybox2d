@@ -27,7 +27,7 @@ before_install:
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew update; fi
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install swig; fi
 install:
-  - python setup.py build
+  - python setup.py build --force
   - python setup.py install
 
 script: nosetests
