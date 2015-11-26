@@ -1,0 +1,88 @@
+# vi: sw=2 ts=2 sts=2
+
+package:
+  name: pybox2d
+  version: 2.3b1
+  # version: {{ environ.get('GIT_DESCRIBE_TAG', '') }}
+
+source:
+  git_url: https://github.com/pybox2d/pybox2d
+  git_rev: pyglet_fixes
+
+build:
+  number: 1
+
+requirements:
+  build:
+    - python
+    - swig >=3
+
+  run:
+    - python
+
+test:
+  imports:
+    - Box2D
+    - Box2D.b2
+
+  commands:
+    - cd ../work
+    - nosetests -v tests
+    - pip install pyglet
+    - python -m examples.car --backend=pyglet --onlyInit
+    - python -m examples.apply_force --backend=pyglet --onlyInit
+    - python -m examples.body_types --backend=pyglet --onlyInit
+    - python -m examples.box_cutter --backend=pyglet --onlyInit
+    - python -m examples.breakable --backend=pyglet --onlyInit
+    - python -m examples.bridge --backend=pyglet --onlyInit
+    - python -m examples.bullet --backend=pyglet --onlyInit
+    - python -m examples.cantilever --backend=pyglet --onlyInit
+    - python -m examples.car --backend=pyglet --onlyInit
+    - python -m examples.chain --backend=pyglet --onlyInit
+    - python -m examples.character_collision --backend=pyglet --onlyInit
+    - python -m examples.cloth --backend=pyglet --onlyInit
+    - python -m examples.collision_filtering --backend=pyglet --onlyInit
+    - python -m examples.collision_processing --backend=pyglet --onlyInit
+    - python -m examples.confined --backend=pyglet --onlyInit
+    - python -m examples.convex_hull --backend=pyglet --onlyInit
+    - python -m examples.conveyor_belt --backend=pyglet --onlyInit
+    - python -m examples.distance --backend=pyglet --onlyInit
+    - python -m examples.edge_shapes --backend=pyglet --onlyInit
+    - python -m examples.edge_test --backend=pyglet --onlyInit
+    - python -m examples.empty --backend=pyglet --onlyInit
+    - python -m examples.framework --backend=pyglet --onlyInit
+    - python -m examples.gish_tribute --backend=pyglet --onlyInit
+    - python -m examples.hello --backend=pyglet --onlyInit > /dev/null
+    - python -m examples.liquid --backend=pyglet --onlyInit
+    - python -m examples.mobile --backend=pyglet --onlyInit
+    - python -m examples.motor_joint --backend=pyglet --onlyInit
+    - python -m examples.one_sided_platform --backend=pyglet --onlyInit
+    - python -m examples.pinball --backend=pyglet --onlyInit
+    - python -m examples.pulley --backend=pyglet --onlyInit
+    - python -m examples.pyramid --backend=pyglet --onlyInit
+    - python -m examples.raycast --backend=pyglet --onlyInit
+    - python -m examples.restitution --backend=pyglet --onlyInit
+    - python -m examples.rope --backend=pyglet --onlyInit
+    - python -m examples.settings --backend=pyglet --onlyInit
+    - python -m examples.theo_jansen --backend=pyglet --onlyInit
+    - python -m examples.tiles --backend=pyglet --onlyInit
+    - python -m examples.time_of_impact --backend=pyglet --onlyInit
+    # - python -m examples.top_down_car --backend=pyglet --onlyInit
+    - python -m examples.tumbler --backend=pyglet --onlyInit
+    - python -m examples.vertical_stack --backend=pyglet --onlyInit
+    - python -m examples.web --backend=pyglet --onlyInit
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  requires:
+  - nose
+
+about:
+  home: http://github.com/pybox2d/pybox2d
+  license: zlib
+  summary: 'Python Box2D'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
